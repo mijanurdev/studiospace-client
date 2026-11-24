@@ -19,7 +19,7 @@ export default function ThemeToggle() {
   }
 
   return (
-    <button onClick={toggle} className="btn btn-ghost rounded-xl">
+    <button onClick={toggle} className={`btn rounded-xl transition hover:scale-105 ${theme === "light" ? "bg-black text-white" : "bg-white text-black"}`}>
       {theme === "light" ? "Dark" : "Light"}
     </button>
   );
