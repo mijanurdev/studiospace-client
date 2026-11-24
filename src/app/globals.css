@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
   --color-gold: #F0B90B;
   --color-sage: #F3F4F0;
@@ -28,4 +30,9 @@ html {
 body {
   background-color: #F3F4F0;
   color: #1A1A1A;
+}
+
+[data-theme="dark"] body {
+  background-color: #111111;
+  color: #F3F4F0;
 }

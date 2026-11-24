@@ -30,24 +30,24 @@ export default function Navbar() {
                 {user.image ? (
                   <img src={user.image} alt={user.name} className="h-8 w-8 rounded-full object-cover" />
                 ) : (
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold font-bold">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold font-bold text-black">
                     {user.name?.charAt(0) || "U"}
                   </span>
                 )}
                 <span className="hidden sm:block">{user.name}</span>
               </button>
               {open && (
-                <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white p-2 text-charcoal shadow-lg">
-                  <Link href="/add-studio" className="block rounded-xl px-3 py-2 transition hover:bg-sage" onClick={() => setOpen(false)}>Add Studio</Link>
-                  <Link href="/my-listings" className="block rounded-xl px-3 py-2 transition hover:bg-sage" onClick={() => setOpen(false)}>My Listings</Link>
-                  <Link href="/my-bookings" className="block rounded-xl px-3 py-2 transition hover:bg-sage" onClick={() => setOpen(false)}>My Bookings</Link>
+                <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white p-2 text-charcoal shadow-lg dark:bg-neutral-900 dark:text-white">
+                  <Link href="/add-studio" className="block rounded-xl px-3 py-2 transition hover:bg-sage dark:hover:bg-neutral-800" onClick={() => setOpen(false)}>Add Studio</Link>
+                  <Link href="/my-listings" className="block rounded-xl px-3 py-2 transition hover:bg-sage dark:hover:bg-neutral-800" onClick={() => setOpen(false)}>My Listings</Link>
+                  <Link href="/my-bookings" className="block rounded-xl px-3 py-2 transition hover:bg-sage dark:hover:bg-neutral-800" onClick={() => setOpen(false)}>My Bookings</Link>
                   <button
                     onClick={async () => {
                       await signOut();
                       setOpen(false);
                       window.location.href = "/";
                     }}
-                    className="w-full rounded-xl px-3 py-2 text-left transition hover:bg-sage"
+                    className="w-full rounded-xl px-3 py-2 text-left transition hover:bg-sage dark:hover:bg-neutral-800"
                   >
                     Sign Out
                   </button>
@@ -56,11 +56,11 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="btn btn-ghost rounded-xl text-charcoal transition hover:scale-105 hover:bg-black hover:text-white">Login</Link>
+              <Link href="/login" className="rounded-xl px-4 py-2 font-semibold text-charcoal transition hover:scale-105 hover:bg-black hover:text-white">Login</Link>
               <Link href="/register" className="btn rounded-xl bg-gold text-black transition hover:scale-105 hover:shadow-lg">Register</Link>
             </>
           )}
-          <button onClick={() => setOpen(!open)} className="btn btn-ghost rounded-xl text-charcoal transition hover:scale-105 md:hidden">Menu</button>
+          <button onClick={() => setOpen(!open)} className="rounded-xl px-3 py-2 font-semibold text-charcoal transition hover:scale-105 hover:bg-black hover:text-white md:hidden">Menu</button>
         </div>
       </div>
       {open && !user && (

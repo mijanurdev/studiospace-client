@@ -73,22 +73,22 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Featured Studios</h2>
-          <Link href="/studios" className="btn btn-ghost rounded-xl text-charcoal transition hover:scale-105 hover:bg-black hover:text-white">View All</Link>
+          <Link href="/studios" className="btn btn-ghost rounded-xl text-charcoal transition hover:scale-105 hover:bg-black hover:text-white dark:text-white">View All</Link>
         </div>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {featured.map((s) => (
             <StudioCard key={s._id} studio={s} />
           ))}
         </div>
-        {featured.length === 0 && <p className="mt-6 text-gray-600">No studios yet. Please start the backend server and run the seed.</p>}
+        {featured.length === 0 && <p className="mt-6 text-gray-600 dark:text-gray-300">No studios yet. Please start the backend server and run the seed.</p>}
       </section>
 
-      <section className="bg-sage-dark py-10">
+      <section className="bg-sage-dark py-10 dark:bg-neutral-900">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-bold">Browse by Category</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-5">
             {categories.map((c) => (
-              <Link key={c.name} href={`/studios?category=${encodeURIComponent(c.name)}`} className="group overflow-hidden rounded-xl bg-white shadow transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <Link key={c.name} href={`/studios?category=${encodeURIComponent(c.name)}`} className="group overflow-hidden rounded-xl bg-white shadow transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
                 <div className="overflow-hidden">
                   <img src={c.image} alt={c.name} className="h-32 w-full object-cover transition duration-300 group-hover:scale-110" />
                 </div>
@@ -99,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="overflow-hidden bg-black py-3 text-gold">
+      <div className="overflow-hidden bg-black py-3 text-gold dark:bg-gold dark:text-neutral-800">
         <div className="animate-marquee flex w-max gap-8 whitespace-nowrap font-bold">
           {[...categories, ...categories].map((c, i) => (
             <span key={i}>{c.name} • </span>
@@ -111,10 +111,10 @@ export default function Home() {
         <h2 className="text-2xl font-bold">How Booking Works</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.title} className="rounded-xl bg-white p-5 shadow transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div key={s.title} className="rounded-xl bg-white p-5 shadow transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-neutral-900">
               <p className="flex h-10 w-10 items-center justify-center rounded-full bg-gold font-bold text-black">{i + 1}</p>
               <h3 className="mt-3 font-bold">{s.title}</h3>
-              <p className="mt-1 text-sm text-gray-600">{s.text}</p>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{s.text}</p>
             </div>
           ))}
         </div>
