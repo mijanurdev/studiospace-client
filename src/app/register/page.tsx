@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { signUp } from "@/lib/auth-client";
+import { signUp, signIn } from "@/lib/auth-client";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -40,6 +40,13 @@ export default function RegisterPage() {
     }
     toast.success("Account created. Please login.");
     router.push("/login");
+  }
+
+  async function googleRegister() {
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
   }
 
   return (
@@ -78,6 +85,15 @@ export default function RegisterPage() {
           {loading ? "Creating..." : "Register"}
         </button>
       </form>
+      <button onClick={googleRegister} className="btn mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white text-black transition hover:scale-105 hover:shadow-lg">
+        <svg className="h-5 w-5" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z" />
+          <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z" />
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z" />
+        </svg>
+        Continue with Google
+      </button>
       <p className="mt-4 text-sm">Already have an account? <Link href="/login" className="font-bold underline">Login</Link></p>
     </div>
   );
