@@ -82,7 +82,13 @@ export default function StudioDetails({ params }: { params: Promise<{ id: string
   }, [id]);
 
   if (!studio) {
-    return <p className="mx-auto max-w-6xl px-4 py-10">Loading studio...</p>;
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-4 py-10">
+        <img src="/logo.svg" alt="StudioSpace" className="h-12 w-auto animate-pulse dark:hidden" />
+        <img src="/logo-dark.svg" alt="StudioSpace" className="hidden h-12 w-auto animate-pulse dark:block" />
+        <p className="text-gray-600 dark:text-gray-300">Loading studio...</p>
+      </div>
+    );
   }
 
   function bookNow() {
@@ -97,7 +103,12 @@ export default function StudioDetails({ params }: { params: Promise<{ id: string
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <Link href="/studios" className="rounded-xl px-4 py-2 font-semibold transition hover:bg-black hover:text-white">Back to Studios</Link>
+      <Link href="/studios" className="inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold transition hover:bg-black hover:text-white dark:hover:bg-gold dark:hover:text-black">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Back to Studios
+      </Link>
       <div className="mt-4 grid gap-8 md:grid-cols-2">
         <img src={localStudioImage(studio.title, studio.image)} alt={studio.title} className="h-96 w-full rounded-xl object-cover" />
         <div>
